@@ -4,6 +4,14 @@ let cors = require("cors");
 let Problem = require("../models/Problem");
 let vm = require("vm");
 
+router.get("/ping", core(), (req, res, next) => {
+    console.log("Pong");
+    res.json({
+        status : 200,
+        result : "Pong",
+    });
+})
+
 router.options("/problems/:problem_id", cors());
 
 router.post("/problems/:problem_id", cors(), async (req, res, next) => {
